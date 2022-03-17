@@ -34,12 +34,14 @@ $shadow: rgb(156, 156, 156);
     }
 }
 @keyframes loadUp {
-    from {
+    0% {
         opacity: 0;
         -webkit-transform: translateY(20px);
         transform: translateY(20px);
     }
-    to {
+    /* Animation is paused/delayed between 50% and 100% */
+    50%,
+    100% {
         opacity: 1;
         -webkit-transform: translateY(0px);
         transform: translateY(0px);
@@ -81,17 +83,33 @@ $shadow: rgb(156, 156, 156);
         transform: translateX(0px);
     }
 }
+@keyframes pause-between-iterations {
+    /* Other animation is visible for 25% of the time */
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0;
+    }
+    /* Other animation is hidden for 75% of the time */
+    25.1% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 .fadeIn {
     animation: fadeIn 1s;
 }
 .load-left {
-    animation: loadFromLeft 1s;
+    animation: loadFromLeft 0.8s;
 }
 .load-right {
     animation: loadFromRight 1s;
 }
 .load-up {
-    animation: loadUp 1s;
+    animation: loadUp 1.8s, pause-between-iterations 1.5s;
 }
 img.slide-right,
 div.slide-right {
@@ -100,6 +118,18 @@ div.slide-right {
 img.slide-right.activate,
 div.slide-right.activate {
     animation: loadFromRight 1s;
+    opacity: 1;
+}
+.loadUp-scroll,
+.fadeIn-scroll {
+    opacity: 0;
+}
+.loadUp-scroll.activate {
+    animation: loadUp 1s;
+    opacity: 1;
+}
+.fadeIn-scroll.activate {
+    animation: fadeIn 1s;
     opacity: 1;
 }
 body {
@@ -211,9 +241,12 @@ h3,
         left: 0;
         width: 28%;
         height: 5px;
-        background: #39b2be;
+        background: $teal;
         content: "";
         border-radius: 3px;
+    }
+    &.orange::after {
+        background: $orange;
     }
 }
 .main-content h3,
@@ -228,7 +261,7 @@ h3,
 }
 .banner {
     background: url("img/revelationcabinetry-homepage-header.jpg") no-repeat
-        center right;
+        center left;
     background-size: auto;
     background-size: cover;
     color: white;
@@ -272,8 +305,6 @@ h3,
     padding: 0.75rem 0.9rem;
     right: 2%;
     top: 45px;
-    -webkit-animation: loadUp 1s;
-    animation: loadUp 1s;
     width: 95%;
     &::before {
         content: "";
@@ -715,6 +746,10 @@ footer {
         }
     }
     .banner {
+        background: url("img/revelationcabinetry-homepage-header.jpg") no-repeat
+            center right;
+        background-size: auto;
+        background-size: cover;
         min-height: 400px;
         h2 {
             padding-bottom: 2rem;

@@ -22,7 +22,7 @@ function debounce(func, wait = 20, immediate = true) {
 }
 const elements = document.querySelectorAll(".action");
 const triggerMultiplier = 1.5;
-const windowHeight = window.innerHeight - 35;
+const windowHeight = window.innerHeight - 50;
 
 scrollAppear = () => {
     elements.forEach((element) => {
