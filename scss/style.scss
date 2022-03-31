@@ -1,3 +1,16 @@
+/*!
+Theme Name: Revelation Cabinetry WP
+Theme URI: https://jeradsdesign.com
+Author: Jerad Horning
+Author URI: https://jeradsdesign.com
+Description: Revelation Cabinetry theme for WordPress
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: translation-ready, tight-sidebar, custom-header, featured-images, custom-menu
+Text Domain: revelationva
+Version: 1.1.8
+*/
+
 // Colors
 $orange: #f79730;
 $teal: #39b2be;
@@ -163,7 +176,9 @@ a {
 html {
     overflow-x: hidden;
 }
-h1 {
+h1,
+.h1 {
+    font-weight: 600;
     margin-bottom: 0;
 }
 .home-h1 {
@@ -184,14 +199,34 @@ h1 {
 }
 p,
 ul,
-.btn {
+.btn,
+.wpcf7-submit {
     font-size: 1.3rem;
 }
 .btn {
     border-radius: 0;
     text-transform: uppercase;
 }
-a.btn.dark-teal {
+input[type="submit"] {
+    background: none;
+    border: none;
+    color: white;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+input[type="email"],
+input[type="text"],
+input[type="textarea"] {
+    line-height: 1.5;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    padding: 5px;
+}
+a.btn.dark-teal,
+span.btn.dark-teal {
     background: $dark-teal;
     border: none;
     color: white;
@@ -227,6 +262,13 @@ a.btn.dark-teal {
             background-color: lighten($dark-teal, 3%);
         }
     }
+}
+.posted {
+    font-size: 1.4rem;
+}
+.project-types {
+    font-size: 1.2rem;
+    text-transform: uppercase;
 }
 h3,
 .h3 {
@@ -548,6 +590,7 @@ a.nav-link {
     height: 75px;
     margin-top: -75px;
     width: 75px;
+    border-radius: 100%;
 }
 .carousel-control-next,
 .carousel-control-prev {
@@ -639,6 +682,11 @@ footer {
         li {
             background: url(img/checkbox.svg) 0 3px no-repeat;
             padding-left: 37px;
+        }
+    }
+    .recent-projects-footer {
+        li {
+            margin-bottom: 10px;
         }
     }
 }
@@ -955,6 +1003,10 @@ footer {
     .mt-xl-14 {
         margin-top: 10rem !important;
     }
+    .h1,
+    h1 {
+        font-size: 3rem;
+    }
 }
 
 // XX-Large devices (larger desktops, 1400px and up)
@@ -983,7 +1035,7 @@ footer {
     }
     .gray-bar {
         p {
-            font-size: 2.6rem;
+            font-size: 2.1rem;
         }
     }
     .btn.dark-teal {
